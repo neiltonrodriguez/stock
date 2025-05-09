@@ -1,5 +1,34 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  padding: 3rem 0;
+`;
+
+const MaxWidthContainer = styled.div`
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+`;
+
+const Card = styled.div`
+    ${({ theme }) => `
+        background-color: ${theme.colors.fundo};
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    `}
+`;
+
+const CardContent = styled.div`
+    ${({ theme }) => `
+        padding: 1.5rem;
+        color: ${theme.colors.primary};
+    `}
+`;
 
 export default function Dashboard({ auth }) {
     return (
@@ -9,13 +38,13 @@ export default function Dashboard({ auth }) {
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">You're logged in!</div>
-                    </div>
-                </div>
-            </div>
+            <Container>
+                <MaxWidthContainer>
+                    <Card>
+                        <CardContent>You're logged in!</CardContent>
+                    </Card>
+                </MaxWidthContainer>
+            </Container>
         </AuthenticatedLayout>
     );
 }

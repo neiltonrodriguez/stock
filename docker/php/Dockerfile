@@ -1,6 +1,5 @@
 FROM php:8.2-fpm
 
-# Instalações
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -21,17 +20,14 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd
 
-# Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www
 
-# Copia o .env.docker da raiz do projeto (graças ao novo contexto)
 COPY docker/.env.docker /var/www/.env
 
-# Copia o projeto Laravel inteiro
 COPY ./app /var/www
 
 RUN composer install --optimize-autoloader --no-interaction
@@ -39,6 +35,5 @@ RUN composer install --optimize-autoloader --no-interaction
 COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Exponha a porta e use o entrypoint
 EXPOSE 9000
 ENTRYPOINT ["entrypoint.sh"]
