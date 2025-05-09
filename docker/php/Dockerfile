@@ -35,13 +35,7 @@ COPY docker/.env.docker /var/www/.env
 COPY ./app /var/www
 
 RUN composer install --optimize-autoloader --no-interaction
-# Instala dependências Laravel
-# RUN composer install --optimize-autoloader --no-interaction \
-#     && php artisan key:generate \
-#     && php artisan migrate --force \
-#     && php artisan db:seed --force
 
-# Copia o script de entrada
 COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
