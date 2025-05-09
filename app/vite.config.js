@@ -10,4 +10,16 @@ export default defineConfig({
         }),
         react(),
     ],
+    watch: {
+        userPolling: true,
+        origin: 'http://localhost:8000'
+    },
+    server: {
+        host: '0.0.0.0',
+        port: 5173,
+        strictPort: true,
+        hmr : {
+            host: 'localhost'
+        }
+    }
 });
