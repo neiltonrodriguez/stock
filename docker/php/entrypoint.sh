@@ -13,6 +13,19 @@ done
 
 echo "✅ MySQL disponível — executando comandos do Laravel..."
 
+# Verifica se é a primeira execução (se não existe a chave JWT)
+if [ ! -f ".jwt_initialized" ]; then
+  echo "🔐 Configurando JWT..."
+  
+  # Publica configurações e gera chave
+  php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider" --force
+  php artisan jwt:secret --force
+  
+  # Marca como configurado
+  touch .jwt_initialized
+  echo "✅ JWT configurado com sucesso"
+fi
+
 # Roda comandos do Laravel
 php artisan key:generate
 php artisan migrate --force

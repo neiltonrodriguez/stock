@@ -28,7 +28,7 @@ WORKDIR /var/www
 
 COPY docker/.env.docker /var/www/.env
 
-COPY ./app /var/www
+COPY ./application /var/www
 
 RUN composer install --optimize-autoloader --no-interaction
 
