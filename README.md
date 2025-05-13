@@ -114,6 +114,17 @@ A API usa JWT (JSON Web Tokens). Para autenticar:
    npm run dev
    ```
 
+## Acesso a área logada (ACL)
+
+   1. usuários criados automaticamente.
+   ```bash
+   email administrador: admin@example.com, senha: password
+   email operador: operador@example.com, senha: password
+   email usuario: usuario@example.com, senha: password
+   ```
+
+Chaves obrigatórias no `.env`:
+
 ## Variáveis de Ambiente
 
 Chaves obrigatórias no `.env`:
