@@ -134,8 +134,8 @@ DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=stock
-DB_USERNAME=seu usuario mysql
-DB_PASSWORD=sua senha do mysql local
+DB_USERNAME=seu usuario mysql OU stockuser (caso vá rodar com doker)
+DB_PASSWORD=sua senha do mysql local OU stockpass (caso vá rodar com doker)
 ```
 
 ## Testando com Curl
